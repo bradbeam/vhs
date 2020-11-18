@@ -15,6 +15,9 @@ jobs:
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
+        with:
+          platforms:
+          - arm64,amd64,arm/v7
       -
         name: Set up Docker Buildx
         id: buildx
@@ -34,7 +37,7 @@ jobs:
           docker buildx build \
             --cache-from "type=local,src=/tmp/.buildx-cache" \
             --cache-to "type=local,dest=/tmp/.buildx-cache" \
-            --platform linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x \
+            --platform linux/amd64,linux/arm/v7,linux/arm64 \
             --output "type=image,push=false" \
             --tag ghcr.io/rename-this/vhs:latest \
             --file ./docker/vhs/Dockerfile ./
