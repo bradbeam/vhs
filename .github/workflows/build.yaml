@@ -3,7 +3,7 @@ name: build
 on:
   pull_request:
     branches:
-    - master
+    - main
 
 jobs:
   buildx:
@@ -56,4 +56,4 @@ jobs:
       -
         name: Inspect image
         run: |
-          docker buildx imagetools inspect crazymax/diun:latest
+          docker buildx imagetools inspect ghcr.io/rename-this/vhs:latest
