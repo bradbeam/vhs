@@ -6,6 +6,7 @@ RUN apt update && \
     apt install -y \
     ca-certificates \
     g++ \
+    jq \
     libpcap-dev
 
 WORKDIR /src
