@@ -1,7 +1,6 @@
 package httpx
 
 import (
-	"fmt"
 	"math/rand"
 	"net/http"
 	"strconv"
@@ -269,8 +268,6 @@ func TestStressMetrics(t *testing.T) {
 	}
 
 	backend.Lock()
-	fmt.Printf("backend: %+v\n", backend.counters)
-	fmt.Printf("refCount: %v\n", refCount)
 	assert.DeepEqual(t, backend.counters, refCount)
 	backend.Unlock()
 }
