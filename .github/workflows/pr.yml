@@ -8,7 +8,7 @@ on:
 jobs:
   test:
     env:
-      IMAGE: "ghcr.io/${{ github.repository_owner }}/${{ github.repository_name }}"
+      IMAGE: "ghcr.io/${{ github.repository }}"
     name: test
     runs-on: ubuntu-latest
     steps:

@@ -12,7 +12,7 @@ jobs:
   buildx:
     runs-on: ubuntu-latest
     env:
-      IMAGE: "ghcr.io/${{ github.repository_owner }}/${{ github.repository_name }}"
+      IMAGE: "ghcr.io/${{ github.repository }}"
       PLATFORMS: "linux/arm64,linux/amd64,linux/arm/v7"
     steps:
     -
