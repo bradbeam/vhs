@@ -1,4 +1,6 @@
-FROM golang:1.15.2-alpine3.12
+FROM golang:1.15.2-alpine3.12 as builder
+
+RUN go install -v -a std
 
 RUN apk add --no-cache --virtual .build-deps \
     ca-certificates \
@@ -7,8 +9,7 @@ RUN apk add --no-cache --virtual .build-deps \
 
 WORKDIR /src
 
-COPY go.sum .
-COPY go.mod .
+COPY go.* .
 
 RUN go mod download
 
@@ -22,7 +23,14 @@ RUN GODEBUG=netdns=go go build \
 
 FROM scratch
 
-COPY --from=0 /src/vhs /
-COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --from=builder /src/vhs /
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 ENTRYPOINT ["/vhs"]
+
+########################################################
+
+FROM builer as test
+
+RUN go test -v ./...
+
