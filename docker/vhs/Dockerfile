@@ -30,7 +30,7 @@ ENTRYPOINT ["/vhs"]
 
 ########################################################
 
-FROM builer as test
+FROM builder as test
 
 RUN go test -v ./...
 
