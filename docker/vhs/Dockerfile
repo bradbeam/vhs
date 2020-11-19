@@ -1,15 +1,16 @@
-FROM golang:1.15.2-alpine3.12 as builder
+FROM golang:1.15 as builder
 
 RUN go install -v -a std
 
-RUN apk add --no-cache --virtual .build-deps \
+RUN apt update && \
+    apt install -y \
     ca-certificates \
     g++ \
     libpcap-dev
 
 WORKDIR /src
 
-COPY go.* .
+COPY go.* /src/
 
 RUN go mod download
 
