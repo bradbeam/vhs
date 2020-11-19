@@ -33,5 +33,5 @@ ENTRYPOINT ["/vhs"]
 
 FROM builder as test
 
-RUN go test -v ./...
+RUN go test -cover -race -coverprofile coverage.out `go list ./... | grep -v /cmd/vhs`
 
