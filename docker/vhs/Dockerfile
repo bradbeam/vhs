@@ -1,6 +1,6 @@
 FROM golang:1.15 as builder
 
-RUN go install -v -a std
+#RUN go install -v -a std
 
 RUN apt update && \
     apt install -y \

@@ -1,16 +1,18 @@
 name: main
 
 on:
-  push:
+  #push:
+  pull_request:
     branches:
     - main
 
 jobs:
-  buildx:
-    runs-on: ubuntu-latest
+  build:
     env:
       IMAGE: "ghcr.io/${{ github.repository }}"
       PLATFORMS: "linux/arm64,linux/amd64,linux/arm/v7"
+    name: build
+    runs-on: ubuntu-latest
     steps:
     -
       name: Checkout
