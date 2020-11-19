@@ -39,7 +39,3 @@ jobs:
           --output "type=image,push=false" \
           --tag ${IMAGE}:${{ github.sha }} \
           --file ./docker/vhs/Dockerfile ./
-
-    - name: run tests
-      run: |
-        make test
