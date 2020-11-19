@@ -17,9 +17,10 @@ RUN go mod download
 
 COPY . .
 
-RUN GODEBUG=netdns=go go build \
-	--ldflags '-extldflags "-static"' \
-	./cmd/vhs
+RUN GODEBUG=netdns=go \
+    go build \
+    -ldflags "-s" \
+    ./cmd/vhs
 
 ########################################################
 
