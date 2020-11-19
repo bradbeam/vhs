@@ -7,6 +7,8 @@ on:
 
 jobs:
   test:
+    env:
+      IMAGE: "ghcr.io/${{ github.repository_owner }}/${{ github.repository_name }}"
     name: test
     runs-on: ubuntu-latest
     steps:
